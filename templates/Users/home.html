@@ -1,0 +1,137 @@
+{% extends "Users/base.html" %}
+
+{% block body %}
+{% load static %}
+
+<section id="Home" class="py-5">
+    <div class="container responsive d-flex gap-5">
+        <div class="p-4 pt-3 shadow w-50 text-center Contact_us">
+            <form method="post" class="d-grid gap-3">
+                {% csrf_token %}
+                <h2>Post Complaint</h2>
+                {{form.Subject}}
+                {{form.Type_of_complaint}}
+                {{form.Description}}
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="pt-4 w-50">
+            <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner shadow" style="border-radius: 9px !important;">
+                  <div class="carousel-item active">
+                    <img src="{% static '/images/pic1.webp' %}" class="d-block w-100 mt-2" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static '/images/pic2.webp' %}" class="d-block w-100 mt-2" alt="...">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{% static '/images/pic3.webp' %}" class="d-block w-100 mt-2" alt="...">
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
+        </div>
+
+</section>
+
+<section id="about" class="py-5" style="background: rgba(213, 218, 247, 0.84);">
+    <h1 class="mb-5 text-center">About Us</h1>
+    <div class="container d-flex responsive gap-4">
+        <div class="p-4">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum et autem suscipit quibusdam maiores
+                similique
+                porro nisi tempore assumenda, quis neque ex delectus accusamus sunt placeat culpa distinctio harum
+                nostrum,
+                nam officia in commodi deleniti. Consectetur reiciendis cum magnam praesentium dignissimos id asperiores
+                doloremque a hic sapiente fugit tenetur aperiam molestias quos illum modi dolores quo quia architecto
+                dolorum, nesciunt, excepturi eaque. Optio voluptate incidunt, officia voluptatum laboriosam eligendi
+                fuga
+                possimus saepe, aperiam ut a sunt vitae suscipit molestias deleniti adipisci, fugit placeat voluptatibus
+                tenetur beatae quisquam harum reprehenderit! Distinctio quis excepturi libero quod iusto ad ab dolorum
+                qui
+                amet?</p>
+        </div>
+        <div class="p-4 bg-info shadow" style="border-radius: 8px;">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Illum et autem suscipit quibusdam maiores
+                similique
+                porro nisi tempore assumenda, quis neque ex delectus accusamus sunt placeat culpa distinctio harum
+                nostrum,
+                nam officia in commodi deleniti. Consectetur reiciendis cum magnam praesentium dignissimos id asperiores
+                doloremque a hic sapiente fugit tenetur aperiam molestias quos illum modi dolores quo quia architecto
+                dolorum, nesciunt, excepturi eaque. Optio voluptate incidunt, officia voluptatum laboriosam eligendi
+                fuga
+                possimus saepe, aperiam ut a sunt vitae suscipit molestias deleniti adipisci, fugit placeat voluptatibus
+                tenetur beatae quisquam harum reprehenderit! Distinctio quis excepturi libero quod iusto ad ab dolorum
+                qui
+                amet?</p>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="py-5">
+    <div class="container d-flex responsive gap-3">
+        <div class="Contact_us text-black text-center p-4 w-75">
+            <h2 style="color: rgb(48, 34, 245);" class="mb-3 text-center m-auto">Feedback</h2><hr class="my-3 mb-4">
+            <form action="/contact_us" method="post" name="cform" class="d-grid gap-3">
+                {% csrf_token%}
+                {{ContactForm.Name}}
+                {{ContactForm.Email}}
+                {{ContactForm.Subject}}
+                {{ContactForm.Message}}
+                <button type="submit" class="btn btn-primary w-100 ">Send</button>
+            </form>
+        </div>
+        <div class="text-black con p-4 w-25">
+            <h2 style="color: rgb(48, 34, 245);" class="mb-3 text-center m-auto">Contact Us</h2><hr class="my-3 mb-4">
+            <div class="d-grid">
+                <a href="tell:-----------"><i class="px-2 fas fa-phone"> </i><b> +123-456-7890 </b></a>
+                <a href="tell:-----------"><i class="px-2 fas fa-phone"> </i><b> +123-456-7890 </b></a>
+                <a href="mailto:abc@gmail.com"><i class="px-2 fas fa-envelope"> </i><b> xyzsfvfsvsfv@gmail.com </b></a>
+                <a href="mailto:xyz@gmail.com"><i class="px-2 fas fa-envelope"> </i><b> xyzsfvfsvsfv@gmail.com </b></a>
+                <a href="#"><i class="px-2 fab fa-facebook"> </i><b> xyz@gmail.com </b></a>
+                <a href="#"><i class="px-2 fas fa-location"> </i><b> Bangalore</b></a>
+            </div>
+        </div>
+        
+    </div>
+</section>
+
+<script>
+    document.getElementById('id_Subject').placeholder = "Enter Subject";
+    document.getElementById('id_Description').placeholder = "Enter Description";
+
+    document.getElementById('id_Name').placeholder = "Enter Name";
+    document.getElementById('id_Email').placeholder = "Enter Email";
+    document.cform[3].placeholder = "Enter Subject"
+    document.getElementById('id_Message').placeholder = "Enter Message";
+</script>
+<style>
+    .Contact_us input::placeholder,
+    .Contact_us textarea::placeholder {
+        color: #000000;
+    }
+    .con{
+        border-radius: 9px;
+        box-shadow: 4px 4px 10px #686666;
+        background: rgba(158, 171, 242, 0.701) !important;
+    }
+    .con div i{
+    font-size: 1.2rem !important;
+        color: rgb(48, 34, 245);
+    }
+    .con div a{
+        text-decoration: none;
+        color: rgb(48, 34, 245);
+        font-size: small;
+        margin-bottom: 2.5rem;
+    }
+</style>
+
+{% endblock body %}

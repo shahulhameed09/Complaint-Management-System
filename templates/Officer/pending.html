@@ -1,0 +1,105 @@
+{% extends "Officer/index.html" %}
+{% load static %}
+{% block content %}
+
+    <!-- Page Content -->
+
+ <form class="form-inline px-2" method="GET" >
+
+
+    <input class="form-control " type="search" placeholder="Search" aria-label="Search" name="search" >
+    &nbsp;
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    
+   &nbsp;
+  <label for="sel1"></label>
+  <select class="form-control px-2" id="sel1" name="drop">
+    <option hidden selected>Select</option>
+    {% for i in category %}
+    <option>{{i}}</option>
+    {% endfor %}
+  </select>
+&nbsp;
+    <button class="btn btn-outline-primary my-3 my-sm-1" type="submit">Filter</button>
+  
+    </form>
+      </nav>
+      <br>
+          <ul>
+	{% for message in messages %}
+	   <div {% if message.tags %} class="alert alert-{{ message.tags }} w-75 m-auto "{% endif %}>
+	   <a class="close ml-2" data-dismiss="alert" href="#">&times;</a>
+      {{ message }}
+    </div>
+	{% endfor %}
+</ul>
+      <div class="container-fluid">
+      <div class="card-body bg-light">
+        <h1 class="mt-4 text-dark"><b>Pending Complaints Table</h1><hr>
+        <br>
+    
+    <div class="table-responsive tablediv">
+	<table id="dtBasicExample" class="table text-center table-striped table-hover table-bordered table-sm" cellspacing="5" width="100%">
+  <thead>
+    <tr>
+	
+      <th class="th-sm text-dark p-2">ID
+
+      </th>
+      <th class="th-sm  text-dark p-2 ">User
+
+      </th>
+	  <th class="th-sm  text-dark p-2">Subject
+
+    
+      <th class="th-sm  text-dark p-2">Complaint Type
+
+      </th>
+      <th class="th-sm-12  text-dark p-2">Issued
+
+      </th>
+      <th class="th-sm  text-dark p-2">Status
+      </th>
+      </th>
+      <th class="th-sm  text-dark p-2">Desc
+
+    
+    </tr>
+  </thead>
+ 
+{% for data in c %}
+<tbody class="font-weight-normal">
+  <tr>
+      <td class="counterCell"> </td>
+
+      <td>{{ data.user.first_name }} {{ data.user.last_name }}</td>
+      
+	    <td>{{data.Subject}}</td>
+      <td>{{ data.Type_of_complaint }}</td>
+      <td>{{ data.Time }}</td>
+      <td class="color_{{ data.status }} ">{{data.get_status_display }}</td>
+      <td>
+        <a class="btn btn-sm btn-primary" href="/view_details/{{data.id}}" >Details</a>
+      </td>
+    </tr>
+    
+  </tbody>
+  {% endfor %} 
+  
+
+ 
+      </ul>
+  <tfoot>
+
+</table>
+</div>
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+   </div>
+  </div>
+  <!-- /#wrapper -->
+
+
+		
+{% endblock content %}

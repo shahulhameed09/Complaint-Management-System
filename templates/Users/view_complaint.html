@@ -1,0 +1,33 @@
+{% extends "Users/base.html" %}
+
+{% block body %}
+
+
+    <div class="Contact_us p-4 pb-3 m-auto w-75">
+        <h5 class="text-center">{{complain.Type_of_complaint}}</h5>
+        <hr>
+        <table>
+            <tr>
+                <th class="pb-4" style="width: 8rem !important;">Subject</th>
+                <th class="pb-4 px-2">:</th>
+                <td class="pb-4">{{complain.Subject}}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <th class="px-2">:</th>
+                <td>{{complain.Description}}</td>
+            </tr>
+            <tr>
+                <th class="pt-4">Status</th>
+                <th class="pt-4 px-2">:</th>
+                <td class="pt-4">{{complain.get_status_display}}</td>
+            </tr>
+        </table><hr>
+        <div class="d-flex gap-2 mt-3 ress align-items-baseline">
+            <a href="/view_status" class="btn btn-primary ms-auto">Back</a>
+            <a href="/delete_complaint/{{complain.id}}" class="btn btn-danger">Delete</a>
+        </div>
+        <p class="mb-0 date">Posted on : {{complain.Time}}</p>
+    </div>
+
+{% endblock body %}

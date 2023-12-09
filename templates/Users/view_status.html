@@ -1,0 +1,35 @@
+{% extends "Users/base.html" %}
+
+{% block body %}
+
+<h1 class="text-center mb-5">Your Complaints Status</h1>
+<div class="d-flex responsive flex-wrap gap-3 container mb-5">
+    {% for i in status reversed %}
+    <div class="Contact_us p-4" style="width: 32%;">
+        <h5 class="text-center">{{i.Type_of_complaint}}</h5>
+        <hr>
+        <table>
+            <tr>
+                <th class="pb-2">Subject</th>
+                <th class="pb-2 px-2">:</th>
+                <td class="pb-2">{{i.Subject}}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <th class="px-2">:</th>
+                <td>{{i.Description|slice:":10"}} ...</td>
+            </tr>
+            <tr>
+                <th class="pt-2">Status</th>
+                <th class="pt-2 px-2">:</th>
+                <td class="pt-2">{{i.get_status_display}}</td>
+            </tr>
+        </table><hr>
+        <div class="d-flex gap-2 mt-3">
+            <a href="/view_complaint/{{i.id}}" class="btn btn-primary btn-sm w-25 ms-auto">View</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock body %}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complaint Management System | My profile </title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/reg.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" style="background-color: #becfdc;">
+        <div class="container-fluid">
+            <a class="navbar-brand">Complaint Management System </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {{home}}" href="/user_home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{view_status}}" href="/view_status">View Status</a>
+                    </li>
+                    {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link {{my_profile}}" href="/my_profile">My Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logouts">Logout</a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logins">Login</a>
+                    </li>
+                    {% endif %}
+                </ul>
+                <form class="d-flex">
+                    <ul class="navbar-nav pic me-auto mb-2 mb-lg-0">
+                        {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            {% if user.first_name == "" %}
+                            <a class="nav-link">Welcome, {{user.username}}!</a>
+                            {% else %}
+                            <a class="nav-link active">Welcome, {{user.first_name}} {{user.last_name}}!</a>
+                            {% endif %}
+                        </li>
+                        <li class="nav-item">
+                            <img class="ppic" src="{{request.user.profile.image.url}}">
+                        </li>
+                        {% endif %}
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="login pb-5 shadow">
+        {% if user.profile.image.url == "" %}
+        <img class="img" src="{% static 'img/default.png' %}">
+        {% else %}
+        <img class="img" src="{{user.profile.image.url}}">
+        {% endif %}
+        <h2 class="text-center mt-2"><b>My Profile</h2>
+        <div class="fields pt-0">
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td class="px-4">:</td>
+                    <td>{{user.username}}</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td class="px-4">:</td>
+                    <td>{{user.first_name}}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td class="px-4">:</td>
+                    <td>{{user.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Email ID</td>
+                    <td class="px-4">:</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex gap-3 mt-4 bbb">
+            <a href="/user_home" class="signin-button w-25">Back</a>
+            <a href="/user_reset_password" class="signin-button w-50">Change Password</a>
+            <a href="/update_profile" class="signin-button w-50">Update Profile</a>
+        </div>
+        </form>
+    </div>
+    <style>
+        body{
+            background-image: url({% static '/images/bg.webp' %});
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+        table {
+            font-size: 18px;
+            height: 150px;
+        }
+
+        .login {
+            width: 700px;
+            padding: 33px 49px 15px 49px;
+            border-radius: 40px;
+            background-color: #d4e7f5d3;
+            box-shadow: none;
+          }
+
+        .img {
+            margin-top: 1rem;
+            margin-left: 43%;
+        }
+        .navbar {
+            background: #000000c6;
+        }
+    
+        .pic {
+            align-items: center;
+        }
+    
+        .ppic {
+            height: 3rem;
+            width: 3rem;
+            border-radius: 50%;
+        }
+    
+        .mess {
+            margin-top: 4rem !important;
+            margin-bottom: 0px !important;
+        }
+        .bbb a,button {
+            text-decoration: none;
+            text-align: center;
+            font-size: 12px !important;
+        }
+        a:hover{
+            color: #ffffff;
+        }
+    </style>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/e29bf25393.js" crossorigin="anonymous"></script>
+
+</html>

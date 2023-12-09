@@ -1,0 +1,136 @@
+{% extends "Officer/index.html" %}
+{% load static %}
+{% block content %}
+
+
+    <!-- Page Content -->
+  
+       </nav>
+       <br>
+
+ <div class="col-12">
+		    <div class="card ">
+		        <div class="card-body">
+		            <div class="row">
+		                <div class="col-md-3">
+		                    <h2 class="text-dark"><b>Statistics</b></h2>
+							
+		                    <hr>
+           
+		                </div>
+						
+		            </div>
+                    <center>
+		            <div class="d-flex gap-3 m-1 ">
+		             
+
+    <div class="card w-25 shadow">
+  <div class="card-body">
+    <h5 class="card-title">Total Complaints:</h5>
+    <br>
+    
+    <h1 class="card-subtitle mb-2 text-muted">{{ total }}</h1>
+    
+  
+  </div>
+</div>
+
+<div class="card w-25 shadow">
+  <div class="card-body">
+    <h5 class="card-title">Solved Complaints:</h5>
+   <br>
+    
+    <h1 class="card-subtitle mb-2 text-muted">{{ solved}}</h1>
+    
+  </div>
+</div>
+<div class="card w-25 shadow">
+  <div class="card-body">
+    <h5 class="card-title">InProgress Complaints:</h5>
+    <br>
+    
+    <h1 class="card-subtitle mb-2 text-muted">{{ inprogress }}</h1>
+    
+   
+  </div>
+</div>
+<div class="card w-25 shadow">
+  <div class="card-body">
+    <h5 class="card-title">Pending Complaints:</h5>
+    <br>
+    
+    <h1 class="card-subtitle mb-2 text-muted">{{ pending }}</h1>
+    
+   
+  </div>
+</div>
+
+
+</div>
+            
+		        </div>
+                <div id="container"></div>
+              <br>
+          </div>
+    </div>
+  <script src="https://code.highcharts.com/highcharts.src.js"></script>
+  <script>
+    Highcharts.chart('container', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Complaints Statistics'
+        },
+        
+        xAxis: {
+          categories: [
+            {% for entry in dataset %}'{{ entry.Type_of_complaint }}'{% if not forloop.last %}, {% endif %}{% endfor %}
+          ]
+        },
+          yAxis: {
+        
+           title: {
+        text: 'Number of Complaints'
+    },
+           
+          
+        },
+        series: [{
+          name: 'Total',
+          data: [
+            {% for entry in dataset %}{{ entry.total }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'Orange'
+      },
+        {
+          name: 'Solved',
+          data: [
+            {% for entry in dataset %}{{ entry.solved }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'green'
+      }, {
+          name: 'UnSolved',
+          data: [
+            {% for entry in dataset %}{{ entry.notsolved }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'red'
+      },
+      {
+          name: 'Inprogress',
+          data: [
+            {% for entry in dataset %}{{ entry.inprogress }}{% if not forloop.last %}, {% endif %}{% endfor %}
+          ],
+          color: 'yellow'
+      }
+      ]
+    });
+  </script>
+ <br>
+ <br>
+	
+    
+
+		
+{% endblock content %}
+

@@ -1,0 +1,76 @@
+{% extends "Officer/index.html" %}
+{% load static %}
+{% block content %}
+
+
+
+<!-- Page Content -->
+</nav>
+<br>
+
+<div class="container-fluid">
+    <div class="login mt-1">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="fields pt-0">
+            <h2 class="text-center mb-4"><b>My Profile</h2>
+            <table>
+                <tr>
+                    <td>Username</td>
+                    <td class="px-4">:</td>
+                    <td> {{form.username}}</td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td class="px-4">:</td>
+                    <td> {{form.first_name}}</td>
+                </tr>
+                <tr>
+                    <td>Last Name</td>
+                    <td class="px-4">:</td>
+                    <td> {{form.last_name}}</td>
+                </tr>
+                <tr>
+                    <td>Email ID</td>
+                    <td class="px-4">:</td>
+                    <td> {{form.email}}</td>
+                </tr>
+                <tr>
+                    <td>Profile Pic</td>
+                    <td class="px-4">:</td>
+                    <td class="small">{{p_form.image}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex gap-3 bbb">
+            <a href="/officer_profile" class="signin-button w-50">Back</a>
+            <button type="submit" class="signin-button w-50"><b>Update Profile</button>
+        </div>
+        </form>
+    </div>
+</div>
+<!-- /#page-content-wrapper -->
+</div>
+</div>
+
+<style>
+    .bbb a,
+    button {
+        text-decoration: none;
+        text-align: center;
+        font-size: 12px !important;
+    }
+
+    a:hover {
+        color: #ffffff;
+    }
+    .login input {
+        background: rgba(187, 195, 236, 0.863) !important;
+        padding: 4px 11px !important;
+        border-radius: 8px;
+        width: 133%;
+        margin-bottom: 8px;
+    }
+</style>
+
+{% endblock content %}

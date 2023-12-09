@@ -1,0 +1,169 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  background: rgb(236, 246, 245);
+}
+
+.login {
+  width: 400px;
+  padding: 33px 49px 35px 49px;
+  border-radius: 40px;
+  background-color: #d4e7f5;
+  box-shadow: 13px 13px 20px #cbced1,
+    -13px -13px 20px #fff;
+}
+
+.img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-left: 35%;
+  box-shadow: 0px 0px 2px#5f5f5f, 0px 0px 0px 5px#ecf0f3, 8px 8px 15px#a7aaaf -8px -8px 15px #fff;
+}
+
+.title {
+  text-align: center;
+  font-size: 25px;
+  padding-top: 15px;
+  letter-spacing: 0.5px;
+}
+
+.sub-title {
+  text-align: center;
+  font-size: 12px;
+  padding-top: 8px;
+  letter-spacing: 1px;
+}
+
+.fields {
+  width: 100%;
+  padding: 18px 5px 5px 5px;
+}
+
+.fields input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 17px;
+  color: #555;
+  padding: 13px 10px 10px 5px;
+}
+
+.username,
+.password {
+  margin-bottom: 30px;
+  border-radius: 25px;
+  box-shadow: inset 8px 8px 8px#cbced1, inset -8px -8px 8px #fff;
+}
+
+i {
+  height: 22px;
+  margin: 0 10px -3px 25px;
+}
+
+.signin-button {
+  display: inline-block;
+  cursor: pointer;
+  width: 100%;
+  padding: 0.75rem 1.25rem;
+  border-radius: 10rem;
+  border: none;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.15rem;
+  transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.signin-button:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5845ea;
+  border-radius: 10rem;
+  z-index: -2;
+}
+.signin-button:before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 100%;
+  background-color: #001763;
+  transition: all 0.3s;
+  border-radius: 10rem;
+  z-index: -1;
+}
+.signin-button:hover:before {
+  width: 100%;
+}
+
+.link {
+  padding-top: 13px;
+  text-align: center;
+  font-size: 15px;
+  margin-bottom: 14px;
+}
+
+.link a {
+  text-decoration: none;
+  color: #aaa;
+}
+
+.google {
+  margin-right: 9px;
+}
+
+
+@media (max-width: 450px) {
+  html {
+    font-size: 70%;
+  }
+
+  .fields i {
+    font-size: 1rem;
+  }
+  .flex {
+    display: inline;
+  }
+
+  .login {
+    width: 350px;
+    height: 530px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .img{
+    margin-left: 11rem;
+  }
+  .title {
+    margin-left: 1rem;
+    font-size: 20px;
+  }
+
+  .signin-button, .button {
+    margin-top: -0.5rem;
+    margin-left: -0.1rem;
+  }
+}

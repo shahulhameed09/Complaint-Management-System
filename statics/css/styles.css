@@ -1,0 +1,65 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap");
+
+* {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    margin: 0;
+    padding-top: 6rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: rgba(242, 242, 244, 0.89);
+}
+.Contact_us {
+    width: 50%;
+    border-radius: 9px;
+    box-shadow: 4px 4px 10px #686666;
+    background: rgba(213, 218, 247, 0.512) !important;
+}
+.map {
+    width: 45%;
+}
+.Contact_us input,
+.Contact_us textarea,
+.Contact_us select {
+    width: 100%;
+    border: none;
+    padding: 4px;
+    font-size: 13px;
+    padding-left: 8px;
+    resize: none;
+    border-radius: 9px;
+    outline: none;
+    background: rgba(98, 118, 232, 0.321);
+}
+
+.Contact_us textarea {
+    height: 12rem;
+}
+
+@media (max-width: 733px) {
+    .responsive{
+        display: grid !important;
+    }
+    .responsive div{
+        width: 100% !important;
+    }
+    .date{
+        text-align: center;
+        margin-top: 1rem;
+    }
+    .ress a{
+        margin: auto;
+        width: 50%;
+    }
+    .login{
+        margin: auto;
+        width: 99% !important;
+    }
+    .login .signin-button{
+        font-size: 8px !important;
+    }
+}
